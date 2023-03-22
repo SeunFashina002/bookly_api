@@ -2,11 +2,13 @@ from django.shortcuts import render
 from .serializers import BookSerializer, FeaturedBookSerializer, BooksCategorySerializer
 from .models import Books, BooksCategory, FeaturedBooks
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.response import Response
+
 
 # Create your views here.
 @api_view(['GET'])
+
 def api_home(request):    
     data="Welcome to bookly api, kindly visit the api documentation to use. Happy usage :)"
     return Response(data)
