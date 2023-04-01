@@ -40,6 +40,7 @@ class FeaturedBooksList(ListCreateAPIView):
 
     def get_queryset(self):
         search = self.request.query_params.get('search')
+        qs = FeaturedBooks.objects.all()
         if search is not None:
             qs = FeaturedBooks.objects.filter(
                 Q(title__icontains=search) | Q(author__icontains=search)
