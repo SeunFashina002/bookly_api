@@ -13,7 +13,7 @@ urlpatterns = [
     # path('', api_home, name='home'),
     path('books/', BooksList.as_view(), name='books'),
     path('books/<int:pk>', BooksDetail.as_view(), name='books-detail'),
-    path('featured-books/', FeaturedBooksList.as_view(), name='featured-books'), #optional-param: ?search=
+    path('featured-books/', FeaturedBooksList.as_view(), name='featured-books'),
     path('featured-books/<int:pk>', FeaturedBooksDetail.as_view(), name='featured-books-detail'),
     path('books-category/', BooksCategoryList.as_view(), name='books-category'),
     path('books-category/<int:pk>', BooksCategoryDetail.as_view(), name='books-category-detail'),
