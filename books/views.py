@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Q
 from .serializers import BookSerializer, FeaturedBookSerializer, BooksCategorySerializer
 from .models import Books, BooksCategory, FeaturedBooks
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
@@ -36,6 +37,14 @@ class BooksDetail(RetrieveUpdateDestroyAPIView):
 class FeaturedBooksList(ListCreateAPIView):
     queryset = FeaturedBooks.objects.all()
     serializer_class = FeaturedBookSerializer
+
+    def get_queryset(self):
+        search = self.request.query_params.get('search')
+        if search is not None:
+            qs = FeaturedBooks.objects.filter(
+                Q(title__icontains=search) | Q(author__icontains=search)
+            )
+        return qs
 
 class FeaturedBooksDetail(RetrieveUpdateDestroyAPIView):
     queryset = FeaturedBooks.objects.all()
