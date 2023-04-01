@@ -7,8 +7,10 @@ class BooksCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = BooksCategory
         fields = (
+            'id',
             'name',
             'image',
+            'alt',
         )
 
 
@@ -20,6 +22,7 @@ class BookSerializer(serializers.ModelSerializer):
             'title',
             'author',
             'cover_image',
+            'alt',
             'book_url',
             'category',
         )
@@ -33,5 +36,6 @@ class FeaturedBookSerializer(serializers.ModelSerializer):
             'title',
             'author',
             'cover_image',
+            'alt',
             'book_url',
         )
